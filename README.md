@@ -2,6 +2,16 @@
 
 react-native + dva-core + react-navigation + sass project base 
 
+
+# tools
+
+ - yellowBox is closed default, config `~/index.js` to open it
+ 
+ ```js
+  console.disableYellowBox = true // -
+  console.disableYellowBox = false // +
+```
+
 # Install
 
 > `npm install`
