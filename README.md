@@ -6,9 +6,9 @@ react-native + dva-core + react-navigation + sass project base
 
 > `npm install`
 
-如果卡在`node-scss`, 请尝试 `npm rebuild node-sass` 重新构建 node-sass
+if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
 
-tips: use `yarn` install dependencies may stuck in install node-sass, suggest use npm to install dependencies
+tips: use `yarn` install dependencies may stuck at install node-sass, suggest use npm to install dependencies
 
 
 # Todos 
