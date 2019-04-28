@@ -1,22 +1,24 @@
-# intro
+# Intro
 
 react-native + dva-core + react-navigation + sass project base 
 
-# install
+# Install
 
 > `npm install`
 
-如果卡在`node-scss`, 请尝试 `npm rebuild node-sass` 重新构建 node-sass
+if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
+
+tips: use `yarn` install dependencies may stuck at install node-sass, suggest use npm to install dependencies
 
 
-# todos 
+# Todos 
 
-- 核心
-  - [ ] api调用优化
-  - [ ] 屏幕适配方案
-  - [ ] 路由/model配置化加载
+- core
+  - [ ] optimization api call 
+  - [ ] screen Adaptation
+  - [ ] router/model dynamic load
 
-- 组件
+- components
   - [ ] Page
   - [ ] flex 
   - [ ] ...
