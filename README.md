@@ -1,15 +1,15 @@
-# intro
+# Intro
 
 react-native + dva-core + react-navigation + sass project base 
 
-# install
+# Install
 
 > `npm install`
 
 如果卡在`node-scss`, 请尝试 `npm rebuild node-sass` 重新构建 node-sass
 
 
-# todos 
+# Todos 
 
 - 核心
   - [ ] api调用优化
