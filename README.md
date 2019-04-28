@@ -13,12 +13,12 @@ tips: use `yarn` install dependencies may stuck at install node-sass, suggest us
 
 # Todos 
 
-- 核心
-  - [ ] api调用优化
-  - [ ] 屏幕适配方案
-  - [ ] 路由/model配置化加载
+- core
+  - [ ] optimization api call 
+  - [ ] screen Adaptation
+  - [ ] router/model dynamic load
 
-- 组件
+- components
   - [ ] Page
   - [ ] flex 
   - [ ] ...
