@@ -24,7 +24,7 @@ tips: use `yarn` install dependencies may stuck at install node-sass, suggest us
 # Todos 
 
 - root
-  - [ ] root view for control public components like `imagePreview`/`loading`/`toast`...
+  - [X] root view for control public components like `imagePreview`/`loading`/`toast`...
   - [ ] screen Adaptation
 - core
   - [ ] optimization api call 
