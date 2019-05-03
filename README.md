@@ -21,17 +21,20 @@ if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
 tips: use `yarn` install dependencies may stuck at install node-sass, suggest use npm to install dependencies
 
 
-# Todos 
+# models/app
 
-- root
-  - [X] root view for control public components like `imagePreview`/`loading`/`toast`...
-  - [ ] screen Adaptation
-- core
-  - [ ] optimization api call 
+> STATE
 
-  - [ ] router/model dynamic load
+status of app
 
-- components
-  - [ ] Page
-  - [ ] flex 
-  - [ ] ...
+- `active`
+- `background `
+- `inactive`
+
+# global
+
+### utils
+
+> getPermission(permission, succeed, denied)
+
+> 
