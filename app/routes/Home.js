@@ -1,14 +1,29 @@
 import React from 'react'
 import { connect } from '../foundation'
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 
-const Home = (props) => {
-  console.log(props)
-  return (
-    <View>
-      <Text>home</Text>
-    </View>
-  )
+class Home extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+    this.onPressLearnMore = this.onPressLearnMore.bind(this)
+  }
+  onPressLearnMore () {
+    global.utils.getPermission('READ_CONTACTS')
+  }
+  render () {
+    return (
+      <View>
+        <Button
+          onPress={this.onPressLearnMore}
+          title='Learn More'
+          color='#841584'
+          accessibilityLabel='Learn more about this purple button'
+        />
+        <Text>home</Text>
+      </View>
+    )
+  }
 }
 
 export default connect(state => ({

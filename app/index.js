@@ -4,6 +4,7 @@ import { connect, Provider } from 'react-redux'
 import dva from './foundation'
 import Router, { routerMiddleware, routerReducer } from './router'
 import appModel from './models/app'
+import './utils'
 
 const dvaEngine = dva({
   initialState: {},
@@ -22,6 +23,7 @@ class Root extends React.Component {
   }
   render () {
     console.log(this.props, 'root component')
+    console.log({ global })
     return (
       <SafeAreaView
         style={{ flex: 1, backgroundColor: '#f5f5f5' }}
