@@ -9,9 +9,9 @@ class Home extends React.Component {
     this.onPressLearnMore = this.onPressLearnMore.bind(this)
   }
   onPressLearnMore () {
-    global.utils.getPermission('READ_CONTACTS')
   }
   render () {
+    console.log(this.props)
     return (
       <View>
         <Button
