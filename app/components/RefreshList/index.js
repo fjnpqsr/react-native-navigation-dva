@@ -121,7 +121,7 @@ class RefreshList extends React.Component {
     const { localProps = {} } = this.state
     const { ListEmptyComponent } = this.props
     const defaultEmptyComponent = (
-      <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>{localProps.footerEmptyDataText}</Text>
       </View>
     )
@@ -133,6 +133,7 @@ class RefreshList extends React.Component {
     let { renderItem, ...rest } = this.props
     return (
       <FlatList
+        {...rest}
         ref={(node) => { this.refreshList = node }}
         onEndReached={this.onLoadMore}
         onRefresh={this.onRefreshing}
@@ -141,8 +142,6 @@ class RefreshList extends React.Component {
         ListEmptyComponent={() => { return this.renderEmptyComponent() }}
         onEndReachedThreshold={0.1}
         renderItem={renderItem}
-        removeClippedSubviews
-        {...rest}
       />
     )
   }
