@@ -1,26 +1,51 @@
 import React from 'react'
 import { connect } from '../foundation'
+import { RefreshList } from '../components'
 import { View, Text, Button } from 'react-native'
 
 class Home extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
-    this.onPressLearnMore = this.onPressLearnMore.bind(this)
+    this.refreshList = null
+    this.state = {
+      page: 1,
+      pages: 2,
+      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    }
+    this.onRefresh = this.onRefresh.bind(this)
+    this.onLoad = this.onLoad.bind(this)
   }
-  onPressLearnMore () {
+  onRefresh (handler) {
+    this.setState({ data: this.state.data.concat(this.state.data.length + 1) })
+    handler()
+  }
+  onLoad (handler) {
+    const { page, pages, data } = this.state
+    if (page < pages) {
+      this.setState({ page: page + 1, pages, data: data.concat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) })
+      handler()
+    } else {
+      handler('NOMORE')
+    }
   }
   render () {
-    console.log(this.props)
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Button
-          onPress={this.onPressLearnMore}
           title='Learn More'
           color='#841584'
           accessibilityLabel='Learn more about this purple button'
         />
-        <Text>home</Text>
+        <RefreshList
+          style={{ flex: 1 }}
+          data={this.state.data}
+          ref={(node) => { this.refreshList = node }}
+          refresh={this.onRefresh}
+          loadMore={this.onLoad}
+          renderItem={({ item, index }) => (
+            <Text style={{ height: 60, lineHeight: 60, paddingHorizontal: 15, backgroundColor: index % 2 ? '#f5f5f5' : '#fff' }}>{index}</Text>
+          )}
+        />
       </View>
     )
   }
