@@ -27,7 +27,7 @@ tips: use `yarn` install dependencies may stuck at install `node-sass`, suggest 
 ### models/app
 
 | props | desc | type | value |
-| --- | --- | --- |
+|--- |--- |--- |--- |
 | state | status of app | `String` | `active`, `background`, `inactive` |
 
 ### utils
