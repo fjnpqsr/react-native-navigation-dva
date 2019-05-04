@@ -32,6 +32,7 @@ class RefreshList extends React.Component {
     this.onRefreshing = this.onRefreshing.bind(this)
     this.onLoadMore = this.onLoadMore.bind(this)
     this.renderFooter = this.renderFooter.bind(this)
+    this.renderEmptyComponent = this.renderEmptyComponent.bind(this)
   }
   shouldStartRefreshing () {
     const { refreshState } = this.state
@@ -86,7 +87,7 @@ class RefreshList extends React.Component {
   renderFooter () {
     let footer = null
     const { refreshState, localProps = {} } = this.state
-    const { LoadingComponent, NoMoreComponent, FailComponent, EmptyComponent } = localProps
+    const { LoadingComponent, NoMoreComponent, FailComponent } = localProps
     const style = { height: 44, lineHeight: 44, textAlign: 'center', marginLeft: 12 }
     switch (refreshState) {
       case RefreshState.Loading:
@@ -111,19 +112,21 @@ class RefreshList extends React.Component {
           </View>
         )
         break
-      case RefreshState.Empty:
-        footer = EmptyComponent || (
-          <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={style}>{localProps.footerEmptyDataText}</Text>
-          </View>
-        )
-        break
       default:
         return null
     }
     return footer
   }
-
+  renderEmptyComponent () {
+    const { localProps = {} } = this.state
+    const { ListEmptyComponent } = this.props
+    const defaultEmptyComponent = (
+      <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+        <Text>{localProps.footerEmptyDataText}</Text>
+      </View>
+    )
+    return ListEmptyComponent || defaultEmptyComponent
+  }
   render () {
     const { refreshState } = this.state
     console.log({ refreshState })
@@ -135,8 +138,10 @@ class RefreshList extends React.Component {
         onRefresh={this.onRefreshing}
         refreshing={refreshState === RefreshState.Refreshing || refreshState === RefreshState.loading}
         ListFooterComponent={() => { return this.renderFooter() }}
+        ListEmptyComponent={() => { return this.renderEmptyComponent() }}
         onEndReachedThreshold={0.1}
         renderItem={renderItem}
+        removeClippedSubviews
         {...rest}
       />
     )
