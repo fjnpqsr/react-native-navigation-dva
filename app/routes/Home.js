@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from '../foundation'
-import { RefreshList } from '../components'
-import { View, Text, Button } from 'react-native'
+import { RefreshList, Page, Text, Button } from '../components'
 
 class Home extends React.Component {
   constructor (props) {
@@ -30,7 +29,7 @@ class Home extends React.Component {
   }
   render () {
     return (
-      <View style={{ flex: 1 }}>
+      <Page>
         <Button
           title='Learn More'
           color='#841584'
@@ -46,7 +45,7 @@ class Home extends React.Component {
             <Text style={{ height: 60, lineHeight: 60, paddingHorizontal: 15, backgroundColor: index % 2 ? '#f5f5f5' : '#fff' }}>{index}</Text>
           )}
         />
-      </View>
+      </Page>
     )
   }
 }
