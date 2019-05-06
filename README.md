@@ -1,16 +1,6 @@
 # Intro
 
-react-native + dva-core + react-navigation + sass project base 
-
-
-# tools
-
- - yellowBox is closed default, config `~/index.js` to open it
- 
- ```js
-  console.disableYellowBox = true // -
-  console.disableYellowBox = false // +
-```
+react-native + dva-core + react-navigation + sass project base
 
 # Install
 
@@ -18,20 +8,37 @@ react-native + dva-core + react-navigation + sass project base
 
 if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
 
-tips: use `yarn` install dependencies may stuck at install node-sass, suggest use npm to install dependencies
+tips: use `yarn` install dependencies may stuck at install `node-sass`, suggest use `npm` to install dependencies
+
+----
+# tools
+
+ - yellowBox is closed default, config `~/index.js` to open it
+
+ ```js
+  console.disableYellowBox = true // -
+  console.disableYellowBox = false // +
+```
+
+----
+# project config support 
+
+modify `~/app.json` to change the default configs for app
+
+- `statusBar`: default statusBar style 
 
 
-# Todos 
+----
+# global
+### models/app
 
-- root
-  - [X] root view for control public components like `imagePreview`/`loading`/`toast`...
-  - [ ] screen Adaptation
-- core
-  - [ ] optimization api call 
+| props | desc | type | value |
+|--- |--- |--- |--- |
+| state | status of app | `String` | `active`, `background`, `inactive` |
 
-  - [ ] router/model dynamic load
+### utils
 
-- components
-  - [ ] Page
-  - [ ] flex 
-  - [ ] ...
+- [`getPermission(permission, succeed, denied)`]()
+
+----
+# Components

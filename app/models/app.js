@@ -2,6 +2,7 @@
 export default {
   namespace: 'app',
   state: {
+    STATE: null,
     login: false,
     loading: true,
     fetching: false
@@ -16,7 +17,6 @@ export default {
   },
   subscriptions: {
     setup ({ dispatch }) {
-      dispatch({ type: 'loadStorage' })
     }
   }
 }
