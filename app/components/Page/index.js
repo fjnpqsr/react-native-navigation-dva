@@ -4,7 +4,11 @@ import { View } from 'react-native'
 import appConfig from '../../../app.json'
 
 class Page extends React.Component {
-  static getDerivedStateFromProps (nextProps, prevState) {
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
+  getSnapshotBeforeUpdate (nextProps, prevState) {
     const { onFocus, forceFocus } = this.props
 
     const nextFocused = nextProps.isFocused // 获取更新后页面是不是活动页
@@ -18,12 +22,11 @@ class Page extends React.Component {
     if (doFocus) {
       onFocus()
     }
+    return null // return snapshot
   }
-  constructor (props) {
-    super(props)
-    this.state = {}
+  componentDidUpdate (prevProps, prevState, snapshot) {
+    // define with getSnapshotBeforeUpdate
   }
-
   render () {
     const { style, ...restProps } = this.props
     const defaultStyle = { flex: 1, backgroundColor: appConfig.pageColor }
