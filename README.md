@@ -2,7 +2,15 @@
 
 react-native + dva-core + react-navigation + sass project base
 
+# Install
 
+> `npm install`
+
+if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
+
+tips: use `yarn` install dependencies may stuck at install `node-sass`, suggest use `npm` to install dependencies
+
+----
 # tools
 
  - yellowBox is closed default, config `~/index.js` to open it
@@ -12,14 +20,12 @@ react-native + dva-core + react-navigation + sass project base
   console.disableYellowBox = false // +
 ```
 
-# Install
+----
+# project config support 
 
-> `npm install`
+modify `~/app.json` to change the default configs for app
 
-if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
-
-tips: use `yarn` install dependencies may stuck at install `node-sass`, suggest use `npm` to install dependencies
-
+- `statusBar`: default statusBar style 
 
 
 ----
