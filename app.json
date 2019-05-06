@@ -1,6 +1,7 @@
 {
   "appName": "RNframe",
   "displayName": "RNframe",
+  "pageColor": "#f5f5f5",
   "statusBar": {
     "animated": true,
     "barStyle": "dark-content",

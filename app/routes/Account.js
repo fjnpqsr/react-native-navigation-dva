@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Page, Text } from '../components'
 
 const Account = () => {
   return (
-    <View>
+    <Page>
       <Text>Account</Text>
-    </View>
+    </Page>
   )
 }
 
