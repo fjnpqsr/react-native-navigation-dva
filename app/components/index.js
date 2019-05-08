@@ -1,3 +1,3 @@
-export { View, Text, Button } from 'react-native'
+export { View, Text, Button, TouchableOpacity, TouchableNativeFeedback } from 'react-native'
 export { default as RefreshList } from './RefreshList'
 export { default as Page } from './Page'
