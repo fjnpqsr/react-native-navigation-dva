@@ -1,8 +1,9 @@
 import React from 'react'
 import { withNavigationFocus } from 'react-navigation'
-import { View } from 'react-native'
+import { View, StatusBar, Platform } from 'react-native'
 import appConfig from '../../../app.json'
 
+const isIos = Platform.OS === 'ios'
 class Page extends React.Component {
   constructor (props) {
     super(props)
@@ -29,7 +30,12 @@ class Page extends React.Component {
   }
   render () {
     const { style, ...restProps } = this.props
-    const defaultStyle = { flex: 1, backgroundColor: appConfig.pageColor }
+    const topHeight = isIos ? 22 : StatusBar.currentHeight
+    const defaultStyle = {
+      flex: 1,
+      backgroundColor: appConfig.pageColor,
+      marginTop: topHeight
+    }
     return (
       <View
         style={[defaultStyle, style]}

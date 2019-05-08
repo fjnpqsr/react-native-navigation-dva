@@ -7,7 +7,7 @@
     "barStyle": "dark-content",
     "hidden": false,
     "backgroundColor": "#fff",
-    "translucent": false,
+    "translucent": true,
     "networkActivityIndicatorVisible": true,
     "showHideTransition": true
   }

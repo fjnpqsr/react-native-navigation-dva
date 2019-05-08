@@ -15,11 +15,27 @@ import { connect } from 'react-redux'
 import Home from './routes/Home'
 import Account from './routes/Account'
 
-const AppNavigator = createBottomTabNavigator({
+const TabsNavigator = createBottomTabNavigator({
   Home: { screen: Home },
   Account: { screen: Account }
 })
-
+const MainNavigator = createStackNavigator({
+  Tabs: { screen: TabsNavigator }
+}, {
+  headerMode: 'none',
+  navigationOptions: ({ navigation }) => {
+    return {
+      header: null,
+      headerTransparent: true
+    }
+  }
+})
+const AppNavigator = createStackNavigator({
+  Main: MainNavigator,
+  DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default }
+}, {
+  initialRouteName: 'Main'
+})
 export const routerReducer = createNavigationReducer(AppNavigator)
 
 export const routerMiddleware = createReactNavigationReduxMiddleware(
