@@ -30,11 +30,9 @@ class Page extends React.Component {
   }
   render () {
     const { style, ...restProps } = this.props
-    const topHeight = isIos ? 22 : StatusBar.currentHeight
     const defaultStyle = {
       flex: 1,
       backgroundColor: appConfig.pageColor,
-      marginTop: topHeight
     }
     return (
       <View

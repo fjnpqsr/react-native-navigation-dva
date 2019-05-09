@@ -2,11 +2,12 @@
   "appName": "RNframe",
   "displayName": "RNframe",
   "pageColor": "#f5f5f5",
+  "iosStatusBarHeight": 22,
   "statusBar": {
     "animated": true,
     "barStyle": "dark-content",
     "hidden": false,
-    "backgroundColor": "#fff",
+    "backgroundColor": "lightcoral",
     "translucent": true,
     "networkActivityIndicatorVisible": true,
     "showHideTransition": true

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from '../foundation'
-import { Page, View, Text, TouchableNativeFeedback } from '../components'
+import { Page, View, Text, Flex } from '../components'
 import css from './index.scss'
 const demos = [
   { routeName: 'Refresh', title: '下拉刷新, 上拉加载', subTitle: '' }
@@ -17,11 +17,11 @@ class Home extends React.Component {
       <Page>
         <View style={{ flex: 1, padding: 15 }}>
           {demos.map(item => (
-            <TouchableNativeFeedback key={item.routeName} onPress={() => { console.log(1) }}>
+            <Flex key={item.routeName} >
               <View style={css.rootItem}>
                 <Text>{item.title}</Text>
               </View>
-            </TouchableNativeFeedback>
+            </Flex>
           ))}
         </View>
       </Page>
