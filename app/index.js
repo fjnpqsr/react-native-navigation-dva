@@ -37,6 +37,7 @@ class Root extends React.Component {
     this.props.dispatch({ type: 'app/update', payload: { STATE: state } })
   }
   render () {
+    const statusBarBackgroundColor = appConfig.statusBar.backgroundColor
     const statusBarHeight = isIos ? appConfig.iosStatusBarHeight : StatusBar.currentHeight
 
     return (
@@ -44,7 +45,10 @@ class Root extends React.Component {
         style={{ flex: 1 }}
       >
         <StatusBar {...appConfig.statusBar} />
-        {!isIos && (<View style={{ height: statusBarHeight, backgroundColor: appConfig.statusBar.backgroundColor }} />)}
+        {!isIos && (
+          <View
+            style={{ height: statusBarHeight, backgroundColor: statusBarBackgroundColor }}
+          />)}
         {/* 使用react-redux 的 Provider 组件传递dva中的store */}
         <Provider store={dvaEngine._store} >
           <Router />
