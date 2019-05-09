@@ -11,13 +11,17 @@ class Home extends React.Component {
     super(props)
     this.state = {
     }
+    this.go = this.go.bind(this)
+  }
+  go () {
+    this.props.navigation.navigate({ routeName: 'DemoRefresh' })
   }
   render () {
     return (
       <Page>
         <View style={{ flex: 1, padding: 15 }}>
           {demos.map(item => (
-            <Flex key={item.routeName} >
+            <Flex key={item.routeName} onPress={this.go}>
               <View style={css.rootItem}>
                 <Text>{item.title}</Text>
               </View>
