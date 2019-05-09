@@ -49,7 +49,9 @@ class Home extends React.Component {
     )
   }
 }
-
+Home.navigationOptions = {
+  header: null
+}
 export default connect(state => ({
   ...state.app
 }))(Home)
