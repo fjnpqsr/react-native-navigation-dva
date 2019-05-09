@@ -31,7 +31,7 @@ class Page extends React.Component {
     const { style, ...restProps } = this.props
     const defaultStyle = {
       flex: 1,
-      backgroundColor: appConfig.pageColor,
+      backgroundColor: appConfig.pageColor
     }
     return (
       <View
