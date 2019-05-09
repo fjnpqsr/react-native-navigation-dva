@@ -1,9 +1,8 @@
 import React from 'react'
 import { withNavigationFocus } from 'react-navigation'
-import { View, StatusBar, Platform } from 'react-native'
+import { View } from 'react-native'
 import appConfig from '../../../app.json'
 
-const isIos = Platform.OS === 'ios'
 class Page extends React.Component {
   constructor (props) {
     super(props)
