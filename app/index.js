@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppState, SafeAreaView, StatusBar, Platform } from 'react-native'
+import { AppState, SafeAreaView, Platform } from 'react-native'
 import { connect, Provider } from 'react-redux'
 import dva from './foundation'
 import Router, { routerMiddleware, routerReducer } from './router'
@@ -37,18 +37,12 @@ class Root extends React.Component {
     this.props.dispatch({ type: 'app/update', payload: { STATE: state } })
   }
   render () {
-    const androidStatusBarHeight = StatusBar.currentHeight
-    const statusBarHeight = isIos ? 22.5 : androidStatusBarHeight
-    const statusBarBackgroundColor = appConfig.statusBar.backgroundColor
     return (
       <SafeAreaView
         style={{
-          flex: 1,
-          borderTopColor: statusBarBackgroundColor,
-          borderTopWidth: statusBarHeight
+          flex: 1
         }}
       >
-        <StatusBar {...appConfig.statusBar} />
         {/* 使用react-redux 的 Provider 组件传递dva中的store */}
         <Provider store={dvaEngine._store} >
           <Router />
