@@ -27,11 +27,13 @@ class VideoControls extends React.Component {
       fullscreen: props.fullscreen
     }
     this.toggleFullscreen = props.toggleFullscreen
+    this.onTogglePause = props.onTogglePause
+    this.onBack = props.onBack
   }
 
   render () {
     const { title } = this.state
-    const { theme = {} } = this.props
+    const { theme = {}, paused } = this.props
     const { header = {}, footer = {} } = theme
     const headerStyle = [css.controlsHeader, { backgroundColor: header.backgroundColor, height: header.height }]
     const headerTextStyle = [{ color: header.color, fontSize: header.fontSize }]
@@ -41,7 +43,12 @@ class VideoControls extends React.Component {
     return (
       <View style={css.controls}>
         <View style={headerStyle}>
-          <TouchIcon name='chevron-left' position={'header'} theme={theme} />
+          <TouchIcon
+            name='chevron-left'
+            position={'header'}
+            theme={theme}
+            onPress={this.onBack}
+          />
           <Text
             style={[headerTextStyle, { flex: 1 }]}
             numberOfLines={1}
@@ -51,7 +58,15 @@ class VideoControls extends React.Component {
           {/* <Text style={}>content</Text> */}
         </View>
         <View style={footerStyle}>
-          <Text style={[css.controlsFooterText, footerTextStyle]}>footer</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchIcon
+              position={'footer'}
+              theme={theme}
+              name={paused ? 'play' : 'pause'}
+              onPress={this.onTogglePause}
+            />
+            <Text style={[css.controlsFooterText, footerTextStyle]}>footer</Text>
+          </View>
           <TouchIcon
             position={'footer'}
             theme={theme}

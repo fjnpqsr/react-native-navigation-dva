@@ -31,11 +31,21 @@ class VideoPLayer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      fullscreen: false
+      fullscreen: false,
+      paused: false,
+      // progress info
+      progressInfo: {
+        currentTime: 0,
+        playableDuration: 1,
+        seekableDuration: 1
+      }
     }
-    this.fullscreen = false
     this.toggleFullscreen = this.toggleFullscreen.bind(this)
+    this.onTogglePause = this.onTogglePause.bind(this)
+    this.onProgress = this.onProgress.bind(this)
+    this.onBack = this.onBack.bind(this)
   }
+
   componentDidUpdate (prevProps, prevState, snapshot) {
     if (prevState.fullscreen === false) {
       Orientation.lockToPortrait()
@@ -47,11 +57,31 @@ class VideoPLayer extends React.Component {
   toggleFullscreen () {
     const state = this.state
     state.fullscreen = !state.fullscreen
-    this.fullscreen = !state.fullscreen
     this.setState(state)
   }
+
+  onTogglePause () {
+    const { paused } = this.state
+    this.setState({
+      paused: !paused
+    })
+  }
+
+  onBack () {
+    if (this.state.fullscreen) {
+      this.toggleFullscreen()
+    } else {
+      window.alert('back')
+    }
+  }
+
+  onProgress (progressInfo) {
+    this.setState({ progressInfo })
+  }
+
   render () {
-    const { fullscreen } = this.state
+    console.log(this)
+    const { fullscreen, progressInfo, paused } = this.state
     const { source, resizeMode = 'contain', theme = {}, controlsTheme = {}, title } = this.props
     const videoTheme = { ...defaultVideoTheme, ...theme }
     const controlsStyle = { ...defaultControlsTheme, ...controlsTheme }
@@ -64,12 +94,18 @@ class VideoPLayer extends React.Component {
         <Video
           style={[css.video, fullscreen ? fullscreenVideo : videoTheme]}
           source={source}
+          paused={paused}
           resizeMode={resizeMode}
+          onProgress={this.onProgress}
         />
         <Controls
           title={title}
+          paused={paused}
+          progressInfo={progressInfo}
           theme={controlsStyle}
           toggleFullscreen={this.toggleFullscreen}
+          onTogglePause={this.onTogglePause}
+          onBack={this.onBack}
           fullscreen={fullscreen}
         />
       </View>
