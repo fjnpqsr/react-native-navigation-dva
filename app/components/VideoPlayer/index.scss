@@ -1,12 +1,6 @@
-@mixin whiteFont {
-  color: #fff;
-  font-size: 12px;
-  line-height: 30px;
-}
+
 .videoWrapper {
   width: 100%;
-  height: 280px;
-  background-color: #000;
 }
 .video {
   position: absolute;
@@ -16,7 +10,6 @@
   top: 0;
   z-index: 10;
   width: 100%;
-  height: 280px;
 }
 .controls {
   flex: 1;
@@ -27,8 +20,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  background-color: rgba(0,0,0,.7);
-  height: 40px;
   padding-right: 15px;
 }
 .controlsContent {
@@ -40,26 +31,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0,0,0,.7);
-  height: 40px;
 }
-.controlsHeaderText {
-  @include whiteFont;
-}
-.controlsContentText {
-  @include whiteFont;
-}
+
 .controlsFooterText {
-  @include whiteFont;
   padding: 0 15px;
 }
 .controlsButtonWrap {
-  width: 40px;
-  height: 40px;
   justify-content: center;
   align-items: center;
-}
-.controlButton {
-  line-height: 40px;
-  color: #fff;
 }

@@ -6,6 +6,27 @@ import Controls from './Controls'
 import css from './index.scss'
 
 const { width: screenWidth } = Dimensions.get('window')
+
+const defaultVideoTheme = {
+  height: 280,
+  backgroundColor: '#000'
+}
+const defaultControlsTheme = {
+  header: {
+    backgroundColor: 'rgba(0,0,0,.8)',
+    height: 40,
+    color: '#fff',
+    fontSize: 12
+  },
+  footer: {
+    backgroundColor: 'rgba(0,0,0,.8)',
+    height: 40,
+    color: '#fff',
+    fontSize: 12
+  },
+  icon: { color: '#fff' }
+}
+
 class VideoPLayer extends React.Component {
   constructor (props) {
     super(props)
@@ -31,20 +52,23 @@ class VideoPLayer extends React.Component {
   }
   render () {
     const { fullscreen } = this.state
+    const { source, resizeMode = 'contain', theme = {}, controlsTheme = {}, title } = this.props
+    const videoTheme = { ...defaultVideoTheme, ...theme }
+    const controlsStyle = { ...defaultControlsTheme, ...controlsTheme }
     const fullscreenVideo = {
       height: screenWidth
     }
-    const videoWrapperStyle = fullscreen ? [css.videoWrapper, fullscreenVideo] : css.videoWrapper
+    const videoWrapperStyle = fullscreen ? [css.videoWrapper, videoTheme, fullscreenVideo] : [css.videoWrapper, videoTheme]
     return (
       <View style={videoWrapperStyle}>
         <Video
-          style={[css.video, fullscreen ? fullscreenVideo : { height: 280 }]}
-          resizeMode='contain'
-          source={{
-            uri: 'http://valipl.cp31.ott.cibntv.net/6975113898C397171B0854CA6/03000801005CB9AE97FB6CB003E880856757FE-96A3-40BC-A028-426856B29CC8.mp4?ccode=0502&duration=10132&expire=18000&psid=ee4e23e7e8060b87f61a3362d9f7d115&ups_client_netip=7829a538&ups_ts=1557515206&ups_userid=&utid=GznKFGBaWi8CATs5xWs1JPIB&vid=XMTQ4NzE1MzcyOA%3D%3D&vkey=A21a6a3cd1b9e204041dedc0a79b606c0'
-          }}
+          style={[css.video, fullscreen ? fullscreenVideo : videoTheme]}
+          source={source}
+          resizeMode={resizeMode}
         />
         <Controls
+          title={title}
+          theme={controlsStyle}
           toggleFullscreen={this.toggleFullscreen}
           fullscreen={fullscreen}
         />

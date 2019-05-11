@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "connect-nox": "adb connect 127.0.0.1:62001",
+    "kill-adb": "adb kill-server",
+    "adb-devices": "adb devices",
+    "run-android": "react-native run-android"
   },
   "dependencies": {
     "dva-core": "^1.4.0",

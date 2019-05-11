@@ -3,16 +3,27 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import css from './index.scss'
 
-const TouchIcon = ({ onPress, ...rest }) => (
-  <TouchableOpacity style={css.controlsButtonWrap} onPress={onPress}>
-    <Icon {...rest} style={css.controlButton} />
-  </TouchableOpacity>
-)
+const TouchIcon = ({ onPress, theme = {}, position, ...rest }) => {
+  let extendStyle = { color: theme.icon.color }
+  let extendWrapStyle
+  switch (position) {
+    case 'header':
+      extendWrapStyle = { height: theme.header.height, width: theme.header.height }
+      break
+    case 'footer':
+      extendWrapStyle = { height: theme.footer.height, width: theme.footer.height }
+  }
+  return (
+    <TouchableOpacity style={[css.controlsButtonWrap, extendWrapStyle]} onPress={onPress}>
+      <Icon {...rest} style={extendStyle} />
+    </TouchableOpacity>
+  )
+}
 class VideoControls extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      title: props.title || 'hahaha',
+      title: props.title || '',
       fullscreen: props.fullscreen
     }
     this.toggleFullscreen = props.toggleFullscreen
@@ -20,21 +31,30 @@ class VideoControls extends React.Component {
 
   render () {
     const { title } = this.state
+    const { theme = {} } = this.props
+    const { header = {}, footer = {} } = theme
+    const headerStyle = [css.controlsHeader, { backgroundColor: header.backgroundColor, height: header.height }]
+    const headerTextStyle = [{ color: header.color, fontSize: header.fontSize }]
+
+    const footerStyle = [css.controlsFooter, { backgroundColor: footer.backgroundColor, height: footer.height }]
+    const footerTextStyle = [{ color: footer.color, fontSize: footer.fontSize }]
     return (
       <View style={css.controls}>
-        <View style={css.controlsHeader}>
-          <TouchIcon name='chevron-left' />
+        <View style={headerStyle}>
+          <TouchIcon name='chevron-left' position={'header'} theme={theme} />
           <Text
-            style={[css.controlsHeaderText, { flex: 1 }]}
+            style={[headerTextStyle, { flex: 1 }]}
             numberOfLines={1}
           >{title}</Text>
         </View>
         <View style={css.controlsContent}>
-          <Text style={css.controlsContentText}>content</Text>
+          {/* <Text style={}>content</Text> */}
         </View>
-        <View style={css.controlsFooter}>
-          <Text style={css.controlsFooterText}>footer</Text>
+        <View style={footerStyle}>
+          <Text style={[css.controlsFooterText, footerTextStyle]}>footer</Text>
           <TouchIcon
+            position={'footer'}
+            theme={theme}
             name={this.props.fullscreen ? 'expand' : 'expand-arrows-alt'}
             onPress={this.toggleFullscreen}
           />
