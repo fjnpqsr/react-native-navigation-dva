@@ -29,7 +29,7 @@ const defaultControlsTheme = {
 class VideoPLayer extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {      fullscreen: false,
+    this.state = { fullscreen: false,
       paused: false,
       // progress info
       progressInfo: {
@@ -80,7 +80,7 @@ class VideoPLayer extends React.Component {
   render () {
     console.log(this)
     const { fullscreen, progressInfo, paused } = this.state
-    const { source, resizeMode = 'contain', theme = {}, controlsTheme = {}, title } = this.props
+    const { source, resizeMode = 'contain', theme = {}, controlsTheme = {}, title, autoHideControlsTimeout = 10000 } = this.props
     const videoTheme = { ...defaultVideoTheme, ...theme }
     const controlsStyle = { ...defaultControlsTheme, ...controlsTheme }
     const fullscreenVideo = {
@@ -105,6 +105,7 @@ class VideoPLayer extends React.Component {
           onTogglePause={this.onTogglePause}
           onBack={this.onBack}
           fullscreen={fullscreen}
+          autoHideControlsTimeout={autoHideControlsTimeout}
         />
       </View>
     )
@@ -115,7 +116,8 @@ VideoPLayer.navigationOptions = {
 }
 const css = StyleSheet.create({
   videoWrapper: {
-    width: '100%'
+    width: '100%',
+    overflow: 'hidden'
   },
   video: {
     position: 'absolute',
