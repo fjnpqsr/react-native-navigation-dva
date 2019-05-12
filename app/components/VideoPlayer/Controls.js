@@ -158,6 +158,7 @@ const css = StyleSheet.create({
     left: 0,
     right: 0,
     top: -5,
+    zIndex: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -165,6 +166,7 @@ const css = StyleSheet.create({
   },
   controlsContent: {
     flex: 1,
+    position: 'relative',
     paddingHorizontal: 15,
     alignItems: 'center',
     justifyContent: 'center'
@@ -174,6 +176,7 @@ const css = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: -5,
+    zIndex: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'

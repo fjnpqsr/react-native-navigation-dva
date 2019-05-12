@@ -90,7 +90,7 @@ class VideoPLayer extends React.Component {
     return (
       <View style={videoWrapperStyle}>
         <Video
-          style={[css.video, fullscreen ? fullscreenVideo : videoTheme]}
+          style={[css.video, fullscreen ? fullscreenVideo : { height: videoTheme.height }]}
           source={source}
           paused={paused}
           resizeMode={resizeMode}
