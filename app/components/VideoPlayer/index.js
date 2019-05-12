@@ -1,9 +1,8 @@
 import React from 'react'
-import { View, Dimensions } from 'react-native'
+import { View, Dimensions, StyleSheet } from 'react-native'
 import Video from 'react-native-video'
 import Orientation from 'react-native-orientation'
 import Controls from './Controls'
-import css from './index.scss'
 
 const { width: screenWidth } = Dimensions.get('window')
 
@@ -30,8 +29,7 @@ const defaultControlsTheme = {
 class VideoPLayer extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      fullscreen: false,
+    this.state = {      fullscreen: false,
       paused: false,
       // progress info
       progressInfo: {
@@ -115,4 +113,18 @@ class VideoPLayer extends React.Component {
 VideoPLayer.navigationOptions = {
   header: null
 }
+const css = StyleSheet.create({
+  videoWrapper: {
+    width: '100%'
+  },
+  video: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    zIndex: 10,
+    width: '100%'
+  }
+})
 export default VideoPLayer

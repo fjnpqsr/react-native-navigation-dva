@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5'
-import css from './index.scss'
 
 const TouchIcon = ({ onPress, theme = {}, position, ...rest }) => {
   let extendStyle = { color: theme.icon.color }
@@ -78,5 +77,35 @@ class VideoControls extends React.Component {
     )
   }
 }
-
+const css = StyleSheet.create({
+  controls: {
+    flex: 1,
+    position: 'relative',
+    zIndex: 20
+  },
+  controlsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingRight: 15
+  },
+  controlsContent: {
+    flex: 1,
+    paddingHorizontal: 15,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  controlsFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  controlsFooterText: {
+    paddingHorizontal: 15
+  },
+  controlsButtonWrap: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 export default VideoControls
