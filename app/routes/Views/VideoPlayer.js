@@ -16,7 +16,6 @@ class VideoPlayerRoute extends React.Component {
   }
 
   render () {
-    console.log(this.player)
     return (
       <View>
         <VideoPlayer
