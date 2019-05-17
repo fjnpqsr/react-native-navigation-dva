@@ -34,7 +34,7 @@ const AppNavigator = createStackNavigator({
   Main: MainNavigator,
   DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default }
 }, {
-  initialRouteName: 'VideoPlayer2'
+  initialRouteName: 'Main'
 })
 export const routerReducer = createNavigationReducer(AppNavigator)
 

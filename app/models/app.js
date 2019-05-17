@@ -1,11 +1,10 @@
+import { Platform } from 'react-native'
 
 export default {
   namespace: 'app',
   state: {
     STATE: null,
-    login: false,
-    loading: true,
-    fetching: false
+    isIos: Platform.OS === 'ios'
   },
   reducers: {
     update (state, { payload }) {

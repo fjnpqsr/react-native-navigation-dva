@@ -13,6 +13,7 @@ class Home extends React.Component {
     this.state = {
     }
     this.go = this.go.bind(this)
+    console.log(this)
   }
   go (demo) {
     this.props.navigation.navigate({ routeName: demo.routeName })

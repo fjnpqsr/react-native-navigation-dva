@@ -1,11 +1,13 @@
 import React from 'react'
-import { AppState, SafeAreaView, Platform } from 'react-native'
+import { AppState, SafeAreaView, StatusBar } from 'react-native'
 import { connect, Provider } from 'react-redux'
-import dva from './foundation'
 import Router, { routerMiddleware, routerReducer } from './router'
+import dva from './foundation'
+import appConfig from '../app.json'
 import appModel from './models/app'
 import './utils'
 
+console.log({ appConfig })
 const dvaEngine = dva({
   initialState: {},
   models: [appModel],
@@ -35,21 +37,17 @@ class Root extends React.Component {
     this.props.dispatch({ type: 'app/update', payload: { STATE: state } })
   }
   render () {
-    const GlobalContext = React.createContext({
-      isIos: Platform.OS === 'ios'
-    })
     return (
       <SafeAreaView
         style={{
           flex: 1
         }}
       >
+        <StatusBar {...appConfig.statusBar} />
         {/* 使用react-redux 的 Provider 组件传递dva中的store */}
-        <GlobalContext.Provider>
-          <Provider store={dvaEngine._store} >
-            <Router />
-          </Provider>
-        </GlobalContext.Provider>
+        <Provider store={dvaEngine._store} >
+          <Router />
+        </Provider>
       </SafeAreaView>
     )
   }
