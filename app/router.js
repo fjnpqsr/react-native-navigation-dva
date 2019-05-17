@@ -31,10 +31,8 @@ const MainNavigator = createStackNavigator({
   }
 })
 const AppNavigator = createStackNavigator({
-  VideoPlayer2: { screen: require('./routes/Views/V2').default },
-  VideoPlayer: { screen: require('./routes/Views/VideoPlayer').default },
   Main: MainNavigator,
-  DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default },
+  DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default }
 }, {
   initialRouteName: 'VideoPlayer2'
 })

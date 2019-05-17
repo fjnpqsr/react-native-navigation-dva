@@ -20,7 +20,9 @@ class Home extends React.Component {
   render () {
     return (
       <Page>
-        <View style={{ flex: 1, padding: 15 }}>
+        <View
+          style={{ flex: 1, padding: 15 }}
+        >
           {demos.map(item => (
             <Flex key={item.routeName} onPress={() => { this.go(item) }}>
               <View style={css.rootItem}>
