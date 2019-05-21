@@ -7,7 +7,7 @@
     "animated": true,
     "barStyle": "dark-content",
     "hidden": false,
-    "backgroundColor": "#fff",
+    "backgroundColor": "lightcoral",
     "translucent": false,
     "networkActivityIndicatorVisible": true,
     "showHideTransition": true

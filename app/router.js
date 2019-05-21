@@ -16,8 +16,8 @@ import Home from './routes/Home'
 import Account from './routes/Account'
 
 const TabsNavigator = createBottomTabNavigator({
-  Home: { screen: Home },
-  Account: { screen: Account }
+  Account: { screen: Account },
+  Home: { screen: Home }
 })
 const MainNavigator = createStackNavigator({
   Tabs: { screen: TabsNavigator }

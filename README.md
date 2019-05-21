@@ -20,35 +20,16 @@ tips: use `yarn` install dependencies may stuck at install `node-sass`, suggest 
   console.disableYellowBox = false // +
 ```
 
-----
-# project config support 
-
-modify `~/app.json` to change the default configs for app
-
-- `statusBar`: default statusBar props
-    - animated
-    - barStyle
-    - hidden
-    - backgroundColor
-    - translucent
-    - networkActivityIndicatorVisible
-    - showHideTransition
-    
-   look at [React-Native StatusBar](https://facebook.github.io/react-native/docs/statusbar#translucent),
-   suggest use `translucent:true` then the statusBar in both android and IOS has same behavior
-   
-- `pageColor`: `Page` component default backgroundColor, you can overwrite it in route, like:
-    ```
-        const SomePage = () => {
-            return <Page style={{backgroundColor: 'red'}}>
-        }
-        export default SomePage
-    ```
-- `iosStatusBarHeight`: config `StatusBar` height for IOS, in Android , this value calc with device 
-
 
 ----
 # global
+
+### global extends
+
+| props |  desc   |  value |
+|--- |--- |--- |
+| global.SCREENINFO | screen info | {width, height} |
+
 ### models/app
 
 | props | desc | type | value |

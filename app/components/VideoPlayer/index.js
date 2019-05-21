@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
   Text,
   View,
@@ -27,7 +28,7 @@ const TouchIcon = ({ onPress, name }) => {
   )
 }
 
-const getDurationString = (totalSeconds, joinFlag = ':', forceJoinHours = false) => {
+export const getDurationString = (totalSeconds, joinFlag = ':', forceJoinHours = false) => {
   const SECONDSPERHOUR = 3600
   const SECONDSPERMINUTE = 60
   let arr = []
@@ -62,7 +63,7 @@ class VideoPlayer extends React.Component {
       playableDuration: 1,
       seekableDuration: 1,
       // extra
-      showExtra: false
+      showExtra: props.showExtra
     }
     // controls state
     this.animation = {
@@ -126,6 +127,11 @@ class VideoPlayer extends React.Component {
   _orientationDidChange (orientation) {
     console.log({ orientation })
     console.log(this.state)
+    this.props.dispatch({ type: 'app/update', payload: { orientation: orientation } })
+    if (orientation === 'PORTRAIT') {
+      this.setState({ fullscreen: false })
+      StatusBar.setHidden(false)
+    }
   }
 
   togglePause () {
@@ -217,11 +223,12 @@ class VideoPlayer extends React.Component {
 
   onLoad (info) {
     const { autoPlay = false, onLoad: onLoadExtra, startTime = 0 } = this.props
-    onLoadExtra && onLoadExtra()
+    onLoadExtra && onLoadExtra(info)
     this.setState({
       showLoading: false,
       paused: !autoPlay,
-      playableDuration: info.duration
+      playableDuration: info.duration,
+      totalDuration: getDurationString(info.duration)
     })
     if (startTime && this.player) {
       this.player.seek(startTime)
@@ -451,4 +458,4 @@ const css = StyleSheet.create({
   }
 })
 
-export default VideoPlayer
+export default connect()(VideoPlayer)
