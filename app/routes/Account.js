@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page, View, Text, TouchableWithoutFeedback, Record, RecordWrapper } from '../components'
+import { Page, Audio } from '../components'
 
 class Account extends React.Component {
   constructor (props) {
@@ -11,25 +11,10 @@ class Account extends React.Component {
   render () {
     return (
       <Page>
-        <RecordWrapper
-          ref={node => { this.record = node }}
-        >
-          <View style={{ height: 80, marginTop: 80, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-            <Text>长按进行录音</Text>
-          </View>
-        </RecordWrapper>
-
-        <TouchableWithoutFeedback
-          onPress={() => {
-            if (this.record) {
-              Record.play(this.record.recordPath)
-            }
-          }}
-        >
-          <View style={{ height: 80, marginTop: 80, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-            <Text>播放录音</Text>
-          </View>
-        </TouchableWithoutFeedback>
+        <Audio
+          // src='http://ip.h5.ri01.sycdn.kuwo.cn/resource/n2/0/31/2339468764.mp3'
+          src='http://mp32.9ku.com/upload/2014/03/09/835692.mp3'
+        />
       </Page>
     )
   }
