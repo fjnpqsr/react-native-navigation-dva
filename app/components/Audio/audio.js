@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Image } from 'react-native'
-import { getDurationString } from '../VideoPlayer'
+// import { getDurationString } from '../VideoPlayer'
 import Sound from 'react-native-sound'
 
 const AUDIOPLAYSTYLE_1 = require('./icon_audio_play_1.png')
@@ -142,13 +142,15 @@ class Audio extends React.Component {
     const { duration, currentTime } = this.state
 
     const { style, backgroundColor = '#eee' } = this.props
+    console.log({ style })
+    const audioHeight = style.height || 30
     return (
       <View>
         <View style={[css.container, style]}>
           <TouchableWithoutFeedback
             onPress={this.togglePlay}
           >
-            <View style={[css.audio, { backgroundColor: backgroundColor }, { width: getWidth(duration) }]}>
+            <View style={[css.audio, { backgroundColor: backgroundColor, height: audioHeight }, { width: getWidth(duration) }]}>
               <View style={[css.arrow, { borderRightColor: backgroundColor }]} />
               <Image
                 style={css.playStyle}
@@ -156,7 +158,7 @@ class Audio extends React.Component {
               />
             </View>
           </TouchableWithoutFeedback>
-          <Text style={css.audioText}>{`${duration}"`}</Text>
+          {duration && <Text style={css.audioText}>{`${duration}"`}</Text>}
         </View>
         {/* <Text>状态: {this.state.status}</Text> */}
         {/* <Text>{getDurationString(currentTime)}: {getDurationString(duration)}</Text> */}
@@ -173,7 +175,6 @@ const css = StyleSheet.create({
     paddingLeft: 4
   },
   audio: {
-    height: 30,
     borderRadius: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',

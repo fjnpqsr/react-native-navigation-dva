@@ -32,7 +32,8 @@ const MainNavigator = createStackNavigator({
 })
 const AppNavigator = createStackNavigator({
   Main: MainNavigator,
-  DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default }
+  DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default },
+  AudioPlay: { screen: require('./routes/Views/AudioPlay').default }
 }, {
   initialRouteName: 'Main'
 })

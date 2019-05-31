@@ -4,6 +4,7 @@ import { Page, View, Text, Flex } from '../components'
 import css from './index.scss'
 const demos = [
   { routeName: 'DemoRefresh', title: '下拉刷新, 上拉加载', subTitle: '' },
+  { routeName: 'AudioPlay', title: '音频播放', subTitle: '' },
   { routeName: 'VideoPlayer', title: '播放器', subTitle: '' }
 ]
 
