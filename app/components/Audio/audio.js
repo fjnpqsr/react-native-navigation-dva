@@ -1,7 +1,36 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, StyleSheet, TouchableWithoutFeedback, Image } from 'react-native'
 import { getDurationString } from '../VideoPlayer'
 import Sound from 'react-native-sound'
+
+const AUDIOPLAYSTYLE_1 = require('./icon_audio_play_1.png')
+const AUDIOPLAYSTYLE_2 = require('./icon_audio_play_2.png')
+const AUDIOPLAYSTYLE_3 = require('./icon_audio_play_3.png')
+
+const getPlayStyle = (time) => {
+  if (time === 0) {
+    return AUDIOPLAYSTYLE_3
+  }
+  switch (time % 3) {
+    case 0:
+      return AUDIOPLAYSTYLE_3
+    case 1:
+      return AUDIOPLAYSTYLE_1
+    case 2:
+      return AUDIOPLAYSTYLE_2
+  }
+}
+
+const getWidth = (duration) => {
+  let width = 80
+  if (duration > 10) {
+    width = 80 + Math.floor((duration - 10) / 10) * 5
+  }
+  if (width > 200) {
+    width = 200
+  }
+  return width
+}
 
 class Audio extends React.Component {
   constructor (props) {
@@ -111,30 +140,70 @@ class Audio extends React.Component {
   render () {
     console.log(this.sound, this.state)
     const { duration, currentTime } = this.state
+
+    const { style, backgroundColor = '#eee' } = this.props
     return (
       <View>
-        <TouchableWithoutFeedback
-          onPress={this.togglePlay}
-        >
-          <View style={css.button}>
-            <Text >sound status: {}</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <Text>状态: {this.state.status}</Text>
-        <Text>{getDurationString(currentTime)}: {getDurationString(duration)}</Text>
+        <View style={[css.container, style]}>
+          <TouchableWithoutFeedback
+            onPress={this.togglePlay}
+          >
+            <View style={[css.audio, { backgroundColor: backgroundColor }, { width: getWidth(duration) }]}>
+              <View style={[css.arrow, { borderRightColor: backgroundColor }]} />
+              <Image
+                style={css.playStyle}
+                source={getPlayStyle(currentTime)}
+              />
+            </View>
+          </TouchableWithoutFeedback>
+          <Text style={css.audioText}>{`${duration}"`}</Text>
+        </View>
+        {/* <Text>状态: {this.state.status}</Text> */}
+        {/* <Text>{getDurationString(currentTime)}: {getDurationString(duration)}</Text> */}
       </View>
     )
   }
 }
 
 const css = StyleSheet.create({
-  button: {
-    height: 40,
-    marginTop: 20,
-    backgroundColor: '#fff',
+  container: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingLeft: 4
+  },
+  audio: {
+    height: 30,
+    borderRadius: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    position: 'relative'
+  },
+  audioText: {
+    fontSize: 12,
+    color: '#888',
+    marginLeft: 12
+  },
+  playStyle: {
+    width: 12,
+    height: 12,
+    marginLeft: 12
+  },
+  arrow: {
+    width: 0,
+    height: 0,
+    borderTopWidth: 4,
+    borderBottomWidth: 4,
+    borderRightWidth: 8,
+    borderLeftWidth: 8,
+    borderTopColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderLeftColor: 'transparent',
+    position: 'absolute',
+    left: -14,
+    top: 11,
+    zIndex: 10
   }
 })
 
