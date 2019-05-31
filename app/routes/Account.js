@@ -1,7 +1,8 @@
 import React from 'react'
 import { Page, Text } from '../components'
+import Icon from 'react-native-vector-icons/Feather'
 
-class Account extends React.Component {
+class CoadingComponent extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -16,5 +17,13 @@ class Account extends React.Component {
     )
   }
 }
+CoadingComponent.navigationOptions = ({ navigations }) => {
+  return {
+    title: '开发测试',
+    tabBarIcon: ({ focused }) => (
+      <Icon name='activity' size={30} color={focused ? 'lightcoral' : '#333'} />
+    )
+  }
+}
 
-export default Account
+export default CoadingComponent

@@ -18,6 +18,10 @@ import Account from './routes/Account'
 const TabsNavigator = createBottomTabNavigator({
   Account: { screen: Account },
   Home: { screen: Home }
+}, {
+  tabBarOptions: {
+    activeTintColor: 'lightcoral'
+  }
 })
 const MainNavigator = createStackNavigator({
   Tabs: { screen: TabsNavigator }
@@ -33,7 +37,8 @@ const MainNavigator = createStackNavigator({
 const AppNavigator = createStackNavigator({
   Main: MainNavigator,
   DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default },
-  AudioPlay: { screen: require('./routes/Views/AudioPlay').default }
+  AudioPlay: { screen: require('./routes/Views/AudioPlay').default },
+  VidioRecord: { screen: require('./routes/Views/VideoRecord').default }
 }, {
   initialRouteName: 'Main'
 })
