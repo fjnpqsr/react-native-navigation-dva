@@ -1,6 +1,7 @@
 import React from 'react'
-import { Page, Text } from '../components'
+import { Page, Text, View } from '../components'
 import Icon from 'react-native-vector-icons/Feather'
+import {Circle} from 'react-native-progress'
 
 class CoadingComponent extends React.Component {
   constructor (props) {
@@ -13,6 +14,7 @@ class CoadingComponent extends React.Component {
     return (
       <Page>
         <Text>1</Text>
+
       </Page>
     )
   }

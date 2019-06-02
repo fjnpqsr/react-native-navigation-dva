@@ -12,12 +12,10 @@ import {
 } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 
-import Home from './routes/Home'
-import Account from './routes/Account'
 
 const TabsNavigator = createBottomTabNavigator({
-  Account: { screen: Account },
-  Home: { screen: Home }
+  Account: { screen: require('./routes/Account').default },
+  Home: { screen: require('./routes/Home').default },
 }, {
   tabBarOptions: {
     activeTintColor: 'lightcoral'
@@ -38,7 +36,7 @@ const AppNavigator = createStackNavigator({
   Main: MainNavigator,
   DemoRefresh: { screen: require('./routes/Views/RefreshDemo').default },
   AudioPlay: { screen: require('./routes/Views/AudioPlay').default },
-  VidioRecord: { screen: require('./routes/Views/VideoRecord').default }
+  VideoRecorder: { screen: require('./routes/Views/VideoRecorder').default }
 }, {
   initialRouteName: 'Main'
 })

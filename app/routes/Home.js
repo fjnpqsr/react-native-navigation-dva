@@ -6,7 +6,7 @@ import css from './index.scss'
 const demos = [
   { routeName: 'DemoRefresh', title: '下拉刷新, 上拉加载', subTitle: '' },
   { routeName: 'AudioPlay', title: '音频播放', subTitle: '' },
-  { routeName: 'VideoRecord', title: '视频录制', subTitle: '' }
+  { routeName: 'VideoRecorder', title: '视频录制', subTitle: '' }
   // { routeName: 'VideoPlayer', title: '播放器', subTitle: '' } //重构
 ]
 

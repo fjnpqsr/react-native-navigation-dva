@@ -43,7 +43,7 @@ class Root extends React.Component {
           flex: 1
         }}
       >
-        <StatusBar {...appConfig.statusBar} />
+        {/*<StatusBar {...appConfig.statusBar} />*/}
         {/* 使用react-redux 的 Provider 组件传递dva中的store */}
         <Provider store={dvaEngine._store} >
           <Router />
