@@ -1,20 +1,27 @@
 import React from 'react'
-import { Page, Text, View } from '../components'
+import { Page, Text, View, TouchableWithoutFeedback } from '../components'
 import Icon from 'react-native-vector-icons/Feather'
-import {Circle} from 'react-native-progress'
 
 class CoadingComponent extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
     }
+    this.go = this.go.bind(this)
   }
-
+  go () {
+    this.props.navigation.navigate({ routeName: 'VideoRecorder' })
+  }
   render () {
     return (
       <Page>
-        <Text>1</Text>
-
+        <TouchableWithoutFeedback
+          onPress={this.go}
+        >
+          <View style={{ height: 60, marginTop: 12, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
+            <Text>点击去视频录制页面</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </Page>
     )
   }

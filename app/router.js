@@ -12,10 +12,9 @@ import {
 } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 
-
 const TabsNavigator = createBottomTabNavigator({
   Account: { screen: require('./routes/Account').default },
-  Home: { screen: require('./routes/Home').default },
+  Home: { screen: require('./routes/Home').default }
 }, {
   tabBarOptions: {
     activeTintColor: 'lightcoral'

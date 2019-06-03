@@ -5,14 +5,21 @@ class RecordView extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
+    this.onOk = this.onOk.bind(this)
+    this.close = this.close.bind(this)
   }
-
+  onOk (info) {
+    console.log(info)
+  }
+  close () {
+    this.props.navigation.goBack()
+  }
   render () {
     return (
       <Page>
         <VideoRecorder
-          onClose={() => { console.log('back') }}
-          onOk={(info) => { console.log(info, 'on ok') }}
+          onClose={this.close}
+          onOk={this.onOk}
         />
       </Page>
     )
