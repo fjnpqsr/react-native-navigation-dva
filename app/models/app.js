@@ -4,7 +4,8 @@ export default {
   namespace: 'app',
   state: {
     STATE: null,
-    isIos: Platform.OS === 'ios'
+    isIos: Platform.OS === 'ios',
+    test: null
   },
   reducers: {
     update (state, { payload }) {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Page, Text, View, TouchableWithoutFeedback } from '../components'
 import Icon from 'react-native-vector-icons/Feather'
 
@@ -12,7 +13,11 @@ class CoadingComponent extends React.Component {
   go () {
     this.props.navigation.navigate({ routeName: 'VideoRecorder' })
   }
+
   render () {
+    const { test } = this.props
+    console.log(this.props)
+    console.log(test)
     return (
       <Page>
         <TouchableWithoutFeedback
@@ -20,6 +25,13 @@ class CoadingComponent extends React.Component {
         >
           <View style={{ height: 60, marginTop: 12, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
             <Text>点击去视频录制页面</Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+          onPress={this.getThumbnail}
+        >
+          <View style={{ height: 60, marginTop: 12, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
+            <Text>获取录制视频的缩略图</Text>
           </View>
         </TouchableWithoutFeedback>
       </Page>
@@ -35,4 +47,6 @@ CoadingComponent.navigationOptions = ({ navigations }) => {
   }
 }
 
-export default CoadingComponent
+export default connect(state => ({
+  ...state.app
+}))(CoadingComponent)

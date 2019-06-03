@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, StatusBar, TouchableWithoutFeedback, Image } fr
 import { Circle } from 'react-native-progress'
 import { RNCamera } from 'react-native-camera'
 import RNVideo from 'react-native-video'
+import RNThumbnail from 'react-native-thumbnail'
+import { AudioUtils } from 'react-native-audio'
 
 class VideoRecorder extends React.Component {
   constructor (props) {
@@ -53,9 +55,15 @@ class VideoRecorder extends React.Component {
         that.stop()
       }
     }, 100)
-    this.camera.recordAsync().then(res => {
+    this.camera.recordAsync({
+      // 配置录制缓存文件存放的位置
+      // path: AudioUtils.DocumentDirectoryPath + '/cache.mp4'
+    }).then(res => {
       this.setState({ recordInfo: res })
       onFinished && onFinished(res)
+      RNThumbnail.get(res.uri).then(data => {
+        console.log({ data }, 'RNThumbnail')
+      })
     })
   }
   stop () {

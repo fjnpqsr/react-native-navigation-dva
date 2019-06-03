@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Page, VideoRecorder } from '../../components'
+import { AudioUtils } from 'react-native-audio'
 
 class RecordView extends React.Component {
   constructor (props) {
@@ -10,6 +12,8 @@ class RecordView extends React.Component {
   }
   onOk (info) {
     console.log(info)
+    this.props.dispatch({ type: 'app/update', payload: { test: info } })
+    this.props.navigation.goBack()
   }
   close () {
     this.props.navigation.goBack()
@@ -30,4 +34,4 @@ RecordView.displayName = 'RecordView'
 RecordView.navigationOptions = {
   header: null
 }
-export default RecordView
+export default connect()(RecordView)
