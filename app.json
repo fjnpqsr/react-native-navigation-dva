@@ -1,15 +1,4 @@
 {
-  "appName": "RNframe",
-  "displayName": "RNframe",
-  "pageColor": "#f5f5f5",
-  "appBackgroundColor": "#fff",
-  "statusBar": {
-    "animated": true,
-    "barStyle": "dark-content",
-    "hidden": false,
-    "backgroundColor": "lightcoral",
-    "translucent": false,
-    "networkActivityIndicatorVisible": true,
-    "showHideTransition": true
-  }
+  "name": "app",
+  "displayName": "app"
 }

@@ -1,44 +1,27 @@
-# Intro
+# 项目说明
 
-react-native + dva-core + react-navigation + sass project base
+## 运行项目
 
-# Install
+> 运行项目之前确保gradle为最新
 
-> `npm install`
+```bash
 
-if stuck at `node-scss`, try `npm rebuild node-sass` to rebuild node-sass
+  mkdir [workplace]
 
-tips: use `yarn` install dependencies may stuck at install `node-sass`, suggest use `npm` to install dependencies
+  cd [workplace]
+  
+  git clone git@gitlab.sinedu.net:foreign/express-house/front/app.git
 
-----
-# tools
+  cd app
 
- - yellowBox is closed default, config `~/index.js` to open it
+  npm install
 
- ```js
-  console.disableYellowBox = true // -
-  console.disableYellowBox = false // +
 ```
 
+## 项目构成
 
-----
-# global
-
-### global extends
-
-| props |  desc   |  value |
-|--- |--- |--- |
-| global.SCREENINFO | screen info | {width, height} |
-
-### models/app
-
-| props | desc | type | value |
-|--- |--- |--- |--- |
-| state | status of app | `String` | `active`, `background`, `inactive` |
-
-### utils
-
-- [`getPermission(permission, succeed, denied)`]()
-
-----
-# Components
+- React/React-native
+- Redux/React-redux
+- React-navigation
+- Dva
+- other dependices
